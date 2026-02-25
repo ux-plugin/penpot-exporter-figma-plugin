@@ -16,7 +16,7 @@ export const createText = (
     shape.componentPropertyReferences
   );
 
-  context.addText(shape);
+  context.addText({ ...shape, type: 'text' });
 };
 
 const parseContent = (

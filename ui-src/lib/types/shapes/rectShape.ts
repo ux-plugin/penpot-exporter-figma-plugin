@@ -12,5 +12,5 @@ export type RectShape = ShapeBaseAttributes &
   LayoutChildAttributes;
 
 type RectAttributes = {
-  type?: 'rect';
+  type: 'rect';
 };

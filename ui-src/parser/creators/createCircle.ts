@@ -15,5 +15,5 @@ export const createCircle = (
     shape.componentPropertyReferences
   );
 
-  context.addCircle(shape);
+  context.addCircle({ ...shape, type: 'circle' });
 };

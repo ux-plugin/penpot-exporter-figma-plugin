@@ -35,7 +35,7 @@ export type PenpotBool = {
 };
 
 type BoolAttributes = {
-  type?: 'bool';
+  type: 'bool';
   shapes?: Uuid[];
   boolType: BoolOperations;
 };

@@ -17,7 +17,7 @@ export const createArtboard = (
     shape.componentPropertyReferences
   );
 
-  context.addBoard(shape);
+  context.addBoard({ ...shape, type: 'frame' });
 
   createItems(context, children);
 

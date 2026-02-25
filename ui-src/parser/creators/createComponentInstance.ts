@@ -14,7 +14,7 @@ export const createComponentInstance = (
 
   shape.componentFile ??= componentRoot ? context.currentFileId : getUnknownFileId(context);
 
-  createArtboard(context, shape);
+  createArtboard(context, { ...shape, type: 'frame' });
 };
 
 const getUnknownFileId = (context: PenpotContext): Uuid => {

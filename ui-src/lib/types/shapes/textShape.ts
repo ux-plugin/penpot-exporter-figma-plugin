@@ -27,7 +27,7 @@ export type PositionDataEntry = {
 };
 
 export type TextAttributes = {
-  type?: 'text';
+  type: 'text';
   content?: TextContent;
   characters?: string; // @ TODO: move to any other place
   positionData?: PositionDataEntry[];

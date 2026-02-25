@@ -18,18 +18,6 @@ export type ShapeBaseAttributes = {
   id: Uuid;
   shapeRef?: Uuid;
   name: string;
-  type?:
-    | 'frame'
-    | 'group'
-    | 'bool'
-    | 'rect'
-    | 'path'
-    | 'text'
-    | 'circle'
-    | 'svg-raw'
-    | 'image'
-    | 'component'
-    | 'instance';
   selrect?: Selrect;
   points?: Point[];
   transform?: Matrix;
@@ -75,6 +63,15 @@ export type ShapeAttributes = {
 
   fillStyleId?: string; // @TODO: move to any other place
   componentPropertyReferences?: ComponentPropertyReference; // @TODO: move to any other place
+
+  /** SVG presentation attributes (fill, stroke, etc.); also present as svg-attrs in Penpot JSON */
+  svgAttrs?: {
+    fill?: string;
+    fillOpacity?: number;
+    fillRule?: string;
+    style?: { fill?: string; fillOpacity?: number };
+    [key: string]: unknown;
+  };
 };
 
 export type ShapeGeomAttributes = {

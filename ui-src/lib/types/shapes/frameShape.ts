@@ -19,7 +19,7 @@ export type FrameShape = ShapeBaseAttributes &
   Children;
 
 type FrameAttributes = {
-  type?: 'frame';
+  type: 'frame';
   shapes?: Uuid[];
   hideFillOnExport?: boolean;
   showContent?: boolean;

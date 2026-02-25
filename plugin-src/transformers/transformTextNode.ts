@@ -18,7 +18,6 @@ import type { TextShape } from '@ui/lib/types/shapes/textShape';
 
 export const transformTextNode = (node: TextNode): TextShape => {
   return {
-    type: 'text',
     name: node.name,
     ...transformIds(node),
     ...transformText(node),

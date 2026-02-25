@@ -14,7 +14,7 @@ export const createGroup = (
     shape.componentPropertyReferences
   );
 
-  context.addGroup(shape);
+  context.addGroup({ ...shape, type: 'group' });
 
   createItems(context, children);
 

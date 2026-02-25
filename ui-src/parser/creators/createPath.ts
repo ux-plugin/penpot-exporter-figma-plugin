@@ -12,5 +12,5 @@ export const createPath = (context: PenpotContext, { type: _type, ...shape }: Pa
     shape.componentPropertyReferences
   );
 
-  context.addPath(shape);
+  context.addPath({ ...shape, type: 'path' });
 };

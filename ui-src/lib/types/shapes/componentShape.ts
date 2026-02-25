@@ -19,7 +19,7 @@ export type ComponentShape = ShapeBaseAttributes &
   Children;
 
 type ComponentAttributes = {
-  type?: 'component';
+  type: 'component';
   path: string;
   showContent?: boolean;
   mainInstanceId?: Uuid;

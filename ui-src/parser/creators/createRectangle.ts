@@ -15,5 +15,5 @@ export const createRectangle = (
     shape.componentPropertyReferences
   );
 
-  context.addRect(shape);
+  context.addRect({ ...shape, type: 'rect' });
 };

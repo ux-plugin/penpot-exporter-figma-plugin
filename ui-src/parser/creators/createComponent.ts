@@ -36,5 +36,5 @@ export const createComponent = (
 
   shape.componentFile = context.currentFileId;
 
-  createArtboard(context, shape);
+  createArtboard(context, { ...shape, type: 'frame' });
 };

@@ -21,6 +21,7 @@ export const transformText = (node: TextNode): TextAttributes & Pick<TextShape, 
   ]);
 
   return {
+    type: 'text',
     characters: node.characters,
     content: {
       type: 'root',

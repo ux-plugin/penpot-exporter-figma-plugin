@@ -12,5 +12,5 @@ export type CircleShape = ShapeBaseAttributes &
   LayoutChildAttributes;
 
 type CircleAttributes = {
-  type?: 'circle';
+  type: 'circle';
 };

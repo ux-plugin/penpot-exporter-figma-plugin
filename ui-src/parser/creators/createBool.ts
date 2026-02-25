@@ -16,7 +16,7 @@ export const createBool = (
     shape.componentPropertyReferences
   );
 
-  const groupId = context.addGroup(shape);
+  const groupId = context.addGroup({ ...shape, type: 'group' });
 
   createItems(context, children);
 

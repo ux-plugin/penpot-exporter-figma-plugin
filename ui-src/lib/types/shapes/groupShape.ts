@@ -13,6 +13,6 @@ export type GroupShape = ShapeBaseAttributes &
   Children;
 
 type GroupAttributes = {
-  type?: 'group';
+  type: 'group';
   shapes?: Uuid[];
 };
