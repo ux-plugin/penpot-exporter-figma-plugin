@@ -13,10 +13,24 @@ export type TextShape = ShapeBaseAttributes &
   TextAttributes &
   LayoutChildAttributes;
 
+/** Per-fragment layout info for text shapes (computed by WASM layout engine) */
+export type PositionDataEntry = {
+  paragraph: number;
+  span: number;
+  startPos: number;
+  endPos: number;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+  direction: number;
+};
+
 export type TextAttributes = {
   type?: 'text';
   content?: TextContent;
   characters?: string; // @ TODO: move to any other place
+  positionData?: PositionDataEntry[];
 };
 
 export type TextContent = {
