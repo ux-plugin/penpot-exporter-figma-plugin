@@ -1,4 +1,5 @@
 import { externalLibraries, overrides } from '@plugin/libraries';
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformAutoLayout,
   transformBlend,
@@ -22,7 +23,8 @@ import {
 import type { ComponentInstance } from '@ui/types';
 
 export const transformInstanceNode = async (
-  node: InstanceNode
+  node: InstanceNode,
+  options?: TransformOptions
 ): Promise<ComponentInstance | undefined> => {
   const mainComponent = await node.getMainComponentAsync();
   if (mainComponent === null) {
@@ -60,7 +62,7 @@ export const transformInstanceNode = async (
     ...transformAutoLayout(node),
     ...transformVariableConsumptionMap(node),
     ...transformGrids(node),
-    ...(await transformChildren(node)),
+    ...(await transformChildren(node, options)),
     ...transformOverrides(node)
   };
 };

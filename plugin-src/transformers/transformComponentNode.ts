@@ -1,4 +1,5 @@
 import { components } from '@plugin/libraries';
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformAutoLayout,
   transformBlend,
@@ -30,7 +31,10 @@ export const resetSharedLibrary = (): void => {
   isSharedLibrary = false;
 };
 
-export const transformComponentNode = async (node: ComponentNode): Promise<ComponentShape> => {
+export const transformComponentNode = async (
+  node: ComponentNode,
+  options?: TransformOptions
+): Promise<ComponentShape> => {
   const isVariant = node.parent?.type === 'COMPONENT_SET';
   const variantId = isVariant ? transformId(node.parent) : undefined;
 
@@ -64,7 +68,7 @@ export const transformComponentNode = async (node: ComponentNode): Promise<Compo
     ...transformAutoLayout(node),
     ...transformVariableConsumptionMap(node),
     ...transformGrids(node),
-    ...(await transformChildren(node)),
+    ...(await transformChildren(node, options)),
     ...(isVariant ? transformVariantNameAndProperties(node, variantId!) : {})
   };
 

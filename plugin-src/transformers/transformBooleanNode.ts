@@ -1,3 +1,4 @@
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformBlend,
   transformChildren,
@@ -18,11 +19,12 @@ import { translateBoolType } from '@plugin/translators';
 import type { BoolShape } from '@ui/lib/types/shapes/boolShape';
 
 export const transformBooleanNode = async (
-  node: BooleanOperationNode
+  node: BooleanOperationNode,
+  options?: TransformOptions
 ): Promise<BoolShape | undefined> => {
-  const children = await transformChildren(node);
+  const children = await transformChildren(node, options);
 
-  if (!children.children || children.children.length === 0) {
+  if (!options?.skipChildren && (!children.children || children.children.length === 0)) {
     // In Penpot, boolean groups without children are not supported.
     // In Figma, they are supported, but they do not make a lot of sense
     // so we just ignore them.

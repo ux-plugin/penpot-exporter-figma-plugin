@@ -1,5 +1,7 @@
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformBlend,
+  transformChildren,
   transformDimension,
   transformEffects,
   transformIds,
@@ -8,18 +10,20 @@ import {
   transformSceneNode,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
-import { transformChildren } from '@plugin/transformers/partials';
 
 import type { GroupShape } from '@ui/lib/types/shapes/groupShape';
 
-export const transformGroupNode = async (node: GroupNode): Promise<GroupShape> => {
+export const transformGroupNode = async (
+  node: GroupNode,
+  options?: TransformOptions
+): Promise<GroupShape> => {
   return {
     ...transformIds(node),
     ...transformGroupNodeLike(node),
     ...transformEffects(node),
     ...transformBlend(node),
     ...transformVariableConsumptionMap(node),
-    ...(await transformChildren(node)),
+    ...(await transformChildren(node, options)),
     ...transformOverrides(node)
   };
 };

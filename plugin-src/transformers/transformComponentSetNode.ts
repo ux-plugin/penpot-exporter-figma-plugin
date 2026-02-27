@@ -1,3 +1,4 @@
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformAutoLayout,
   transformBlend,
@@ -22,7 +23,10 @@ import {
 
 import type { FrameShape } from '@ui/lib/types/shapes/frameShape';
 
-export const transformComponentSetNode = async (node: ComponentSetNode): Promise<FrameShape> => {
+export const transformComponentSetNode = async (
+  node: ComponentSetNode,
+  options?: TransformOptions
+): Promise<FrameShape> => {
   registerComponentProperties(node);
   registerVariantProperties(node);
 
@@ -44,7 +48,7 @@ export const transformComponentSetNode = async (node: ComponentSetNode): Promise
     ...transformAutoLayout(node),
     ...transformComponentSetStrokesAndCornerRadius(node),
     ...transformVariableConsumptionMap(node),
-    ...(await transformChildren(node)),
+    ...(await transformChildren(node, options)),
     ...transformOverrides(node)
   };
 };

@@ -1,3 +1,4 @@
+import type { TransformOptions } from '@plugin/transformOptions';
 import { translateChildren, translateMaskChildren } from '@plugin/translators';
 
 import type { Children } from '@ui/lib/types/utils/children';
@@ -25,7 +26,14 @@ const deferToMacrotask = <T>(fn: () => Promise<T>): Promise<T> => {
   });
 };
 
-export const transformChildren = async (node: ChildrenMixin): Promise<Children> => {
+export const transformChildren = async (
+  node: ChildrenMixin,
+  options?: TransformOptions
+): Promise<Children> => {
+  if (options?.skipChildren === true) {
+    return { children: [] };
+  }
+
   const maskIndex = node.children.findIndex(nodeActsAsMask);
   const containsMask = maskIndex !== -1;
 

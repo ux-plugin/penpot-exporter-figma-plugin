@@ -1,3 +1,4 @@
+import type { TransformOptions } from '@plugin/transformOptions';
 import {
   transformAutoLayout,
   transformBlend,
@@ -25,7 +26,10 @@ const isSectionNode = (node: FrameNode | SectionNode | ComponentSetNode): node i
   return node.type === 'SECTION';
 };
 
-export const transformFrameNode = async (node: FrameNode | SectionNode): Promise<FrameShape> => {
+export const transformFrameNode = async (
+  node: FrameNode | SectionNode,
+  options?: TransformOptions
+): Promise<FrameShape> => {
   let frameSpecificAttributes: Partial<FrameShape> = {};
   let referencePoint: Point = { x: node.absoluteTransform[0][2], y: node.absoluteTransform[1][2] };
 
@@ -63,7 +67,7 @@ export const transformFrameNode = async (node: FrameNode | SectionNode): Promise
     ...transformDimension(node),
     ...transformSceneNode(node),
     ...transformVariableConsumptionMap(node),
-    ...(await transformChildren(node)),
+    ...(await transformChildren(node, options)),
     ...transformOverrides(node)
   };
 };
