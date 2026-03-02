@@ -5,8 +5,8 @@ import type { FrameShape } from '@ui/lib/types/shapes/frameShape';
 import type { GroupShape } from '@ui/lib/types/shapes/groupShape';
 import type { ImageShape } from '@ui/lib/types/shapes/imageShape';
 import type { PathShape } from '@ui/lib/types/shapes/pathShape';
-import type { SvgRawShape } from '@ui/lib/types/shapes/svgRawShape';
 import type { RectShape } from '@ui/lib/types/shapes/rectShape';
+import type { SvgRawShape } from '@ui/lib/types/shapes/svgRawShape';
 import type { TextShape } from '@ui/lib/types/shapes/textShape';
 import type { ComponentInstance } from '@ui/types';
 
