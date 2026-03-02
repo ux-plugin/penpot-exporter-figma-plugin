@@ -22,7 +22,7 @@ export type SvgRawViewbox = {
 };
 
 type SvgRawAttributes = {
-  type: 'svgRaw';
+  type: 'svg-raw';
   content?: SvgRawContent;
   svgViewbox?: SvgRawViewbox;
   svgDefs?: Record<string, string>;
