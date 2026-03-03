@@ -13,3 +13,4 @@ export * from './transformRectangleNode';
 export * from './transformSceneNode';
 export * from './transformTextNode';
 export * from './transformVectorNode';
+export { transformId } from './partials';

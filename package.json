@@ -25,6 +25,10 @@
   },
   "author": "Kaleidos",
   "license": "MPL2.0",
+  "exports": {
+    "./lib": "./lib/index.ts",
+    "./plugin": "./plugin-src/transformers/index.ts"
+  },
   "dependencies": {
     "@create-figma-plugin/ui": "^4.0",
     "@penpot/library": "1.2.0-RC1",
