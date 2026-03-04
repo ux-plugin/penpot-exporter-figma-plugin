@@ -1,4 +1,5 @@
 // Root
+export * from '../lib/types/changes';
 export * from '../lib/types/exportOptions';
 export * from '../lib/types/penpotContext';
 export * from '../lib/types/penpotFile';
