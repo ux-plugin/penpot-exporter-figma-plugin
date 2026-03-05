@@ -7,7 +7,7 @@ export * from './transformFrameNode';
 export * from './transformGroupNode';
 export * from './transformInstanceNode';
 export * from './transformLineNode';
-export * from './transformPageNode';
+export { transformPageNode, translatePage } from './transformPageNode';
 export * from './transformPathNode';
 export * from './transformRectangleNode';
 export * from './transformSceneNode';

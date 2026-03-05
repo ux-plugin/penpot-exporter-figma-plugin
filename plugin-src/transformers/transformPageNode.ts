@@ -10,3 +10,6 @@ export const transformPageNode = async (node: PageNode): Promise<PenpotPage> => 
     children: await translateChildren(node.children)
   };
 };
+
+/** Public alias for transformPageNode: converts a Figma PageNode to PenpotPage. */
+export const translatePage = transformPageNode;
