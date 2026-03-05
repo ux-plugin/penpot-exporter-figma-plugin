@@ -5,7 +5,9 @@
   "type": "module",
   "scripts": {
     "build": "concurrently -n widget,iframe 'npm:build:main' 'npm:build:ui -- --mode development'",
-    "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json",
+    "build:lib": "npm run build:lib:types && npm run build:lib:transformers",
+    "build:lib:types": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json",
+    "build:lib:transformers": "vite build --config vite.config.plugin.ts && tsc -p tsconfig.plugin.json",
     "build:prod": "concurrently -n widget,iframe 'npm:build:main' 'npm:build:ui -- --mode production'",
     "build:main": "esbuild plugin-src/code.ts --bundle --outfile=dist/code.js --target=es2016 --minify",
     "build:ui": "vite build",
@@ -33,7 +35,12 @@
       "require": "./dist/lib/index.cjs.js",
       "default": "./dist/lib/index.js"
     },
-    "./plugin": "./plugin-src/transformers/index.ts"
+    "./plugin": {
+      "types": "./dist/plugin-dts/plugin-src/transformers/index.d.ts",
+      "import": "./dist/plugin.js",
+      "require": "./dist/plugin.cjs.js",
+      "default": "./dist/plugin.js"
+    }
   },
   "files": [
     "dist",
