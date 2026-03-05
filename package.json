@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "concurrently -n widget,iframe 'npm:build:main' 'npm:build:ui -- --mode development'",
+    "build:lib": "vite build --config vite.config.lib.ts && tsc -p tsconfig.lib.json",
     "build:prod": "concurrently -n widget,iframe 'npm:build:main' 'npm:build:ui -- --mode production'",
     "build:main": "esbuild plugin-src/code.ts --bundle --outfile=dist/code.js --target=es2016 --minify",
     "build:ui": "vite build",
@@ -26,9 +27,19 @@
   "author": "Kaleidos",
   "license": "MPL2.0",
   "exports": {
-    "./lib": "./lib/index.ts",
+    "./lib": {
+      "types": "./dist/lib/index.d.ts",
+      "import": "./dist/lib/index.js",
+      "require": "./dist/lib/index.cjs.js",
+      "default": "./dist/lib/index.js"
+    },
     "./plugin": "./plugin-src/transformers/index.ts"
   },
+  "files": [
+    "dist",
+    "lib",
+    "plugin-src"
+  ],
   "dependencies": {
     "@create-figma-plugin/ui": "^4.0",
     "@penpot/library": "1.2.0-RC1",
