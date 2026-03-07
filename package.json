@@ -29,13 +29,13 @@
   "author": "Kaleidos",
   "license": "MPL2.0",
   "exports": {
-    "./lib": {
+    "./types": {
       "types": "./dist/lib/index.d.ts",
       "import": "./dist/lib/index.js",
       "require": "./dist/lib/index.cjs.js",
       "default": "./dist/lib/index.js"
     },
-    "./plugin": {
+    "./transformers": {
       "types": "./dist/plugin-dts/plugin-src/transformers/index.d.ts",
       "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs.js",
