@@ -11,6 +11,7 @@ import {
   transformProportion,
   transformRotation,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
@@ -40,7 +41,8 @@ export const transformPathNode = (node: StarNode | PolygonNode): PathShape | und
     ...transformLayoutAttributes(node),
     ...transformConstraints(node),
     ...transformVariableConsumptionMap(node),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };
 

@@ -17,6 +17,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap,
   transformVariantNameAndProperties
@@ -69,7 +70,8 @@ export const transformComponentNode = async (
     ...transformVariableConsumptionMap(node),
     ...transformGrids(node),
     ...(await transformChildren(node, options)),
-    ...(isVariant ? transformVariantNameAndProperties(node, variantId!) : {})
+    ...(isVariant ? transformVariantNameAndProperties(node, variantId!) : {}),
+    ...transformSelrect(node)
   };
 
   const nameSplit = component.name.split(' / ');

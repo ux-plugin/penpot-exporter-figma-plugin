@@ -16,6 +16,9 @@ export const translateFill = (fill: Paint): Fill | undefined => {
       return translateGradientLinearFill(fill);
     case 'GRADIENT_RADIAL':
       return translateGradientRadialFill(fill);
+    case 'GRADIENT_ANGULAR':
+    case 'GRADIENT_DIAMOND':
+      return translateGradientLinearFill(fill as GradientPaint);
     case 'IMAGE':
       return translateImageFill(fill);
   }

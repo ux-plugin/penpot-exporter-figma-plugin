@@ -6,16 +6,18 @@ export const translateStrokes = (
   node: MinimalStrokesMixin | (MinimalStrokesMixin & IndividualStrokesMixin),
   strokeCaps: (stroke: Stroke) => Stroke = stroke => stroke
 ): Stroke[] => {
+  const dashPattern = node.dashPattern ?? [];
+  const strokesList = node.strokes ?? [];
   const sharedStrokeProperties: Stroke = {
     strokeWidth: translateStrokeWeight(node),
     strokeAlignment: translateStrokeAlignment(node.strokeAlign),
-    strokeStyle: node.dashPattern.length ? 'dashed' : 'solid'
+    strokeStyle: dashPattern.length ? 'dashed' : 'solid'
   };
 
   const penpotStrokes: Stroke[] = [];
 
-  for (let index = 0; index < node.strokes.length; index++) {
-    const stroke = node.strokes[index];
+  for (let index = 0; index < strokesList.length; index++) {
+    const stroke = strokesList[index];
     const penpotStroke = translateStroke(stroke, sharedStrokeProperties, strokeCaps, index === 0);
 
     if (!penpotStroke) {

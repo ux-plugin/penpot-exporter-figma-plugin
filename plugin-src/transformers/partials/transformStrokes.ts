@@ -10,7 +10,7 @@ const isVectorLike = (node: GeometryMixin | VectorLikeMixin): node is VectorLike
 };
 
 const hasFillGeometry = (node: GeometryMixin): boolean => {
-  return node.fillGeometry.length > 0;
+  return (node.fillGeometry?.length ?? 0) > 0;
 };
 
 export const transformStrokes = (
@@ -19,11 +19,10 @@ export const transformStrokes = (
   const vectorNetwork = isVectorLike(node) ? node.vectorNetwork : undefined;
 
   const strokeCaps = (stroke: Stroke): Stroke => {
-    if (!hasFillGeometry(node) && vectorNetwork && vectorNetwork.vertices.length > 0) {
-      stroke.strokeCapStart = translateStrokeCap(vectorNetwork.vertices[0]);
-      stroke.strokeCapEnd = translateStrokeCap(
-        vectorNetwork.vertices[vectorNetwork.vertices.length - 1]
-      );
+    const vertices = vectorNetwork?.vertices;
+    if (!hasFillGeometry(node) && vertices && vertices.length > 0) {
+      stroke.strokeCapStart = translateStrokeCap(vertices[0]);
+      stroke.strokeCapEnd = translateStrokeCap(vertices[vertices.length - 1]);
     }
 
     return stroke;

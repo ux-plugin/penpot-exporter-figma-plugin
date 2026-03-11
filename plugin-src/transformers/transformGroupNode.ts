@@ -8,6 +8,7 @@ import {
   transformOverrides,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
 
@@ -24,7 +25,8 @@ export const transformGroupNode = async (
     ...transformBlend(node),
     ...transformVariableConsumptionMap(node),
     ...(await transformChildren(node, options)),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };
 

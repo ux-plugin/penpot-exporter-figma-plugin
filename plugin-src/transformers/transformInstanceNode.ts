@@ -16,6 +16,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
@@ -63,7 +64,8 @@ export const transformInstanceNode = async (
     ...transformVariableConsumptionMap(node),
     ...transformGrids(node),
     ...(await transformChildren(node, options)),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };
 

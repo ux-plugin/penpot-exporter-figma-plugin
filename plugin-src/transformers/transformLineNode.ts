@@ -6,6 +6,7 @@ import {
   transformLayoutAttributes,
   transformOverrides,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
@@ -32,7 +33,8 @@ export const transformLineNode = (node: LineNode): PathShape => {
     ...transformLayoutAttributes(node),
     ...transformConstraints(node),
     ...transformVariableConsumptionMap(node),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };
 

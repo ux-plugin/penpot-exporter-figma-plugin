@@ -14,6 +14,7 @@ export * from './transformOverrides';
 export * from './transformProportion';
 export * from './transformRotationAndPosition';
 export * from './transformSceneNode';
+export * from './transformSelrect';
 export * from './transformStrokes';
 export * from './transformText';
 export * from './transformVariableConsumptionMap';

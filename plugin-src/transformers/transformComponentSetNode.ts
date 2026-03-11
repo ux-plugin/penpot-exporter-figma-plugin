@@ -14,6 +14,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
 import {
@@ -49,6 +50,7 @@ export const transformComponentSetNode = async (
     ...transformComponentSetStrokesAndCornerRadius(node),
     ...transformVariableConsumptionMap(node),
     ...(await transformChildren(node, options)),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };

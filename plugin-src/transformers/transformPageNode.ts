@@ -4,10 +4,12 @@ import { translatePageFill } from '@plugin/translators/fills';
 import type { PenpotPage } from '@ui/lib/types/penpotPage';
 
 export const transformPageNode = async (node: PageNode): Promise<PenpotPage> => {
+  const backgrounds = (node as { backgrounds?: readonly Paint[] }).backgrounds;
+  const children = (node as { children?: readonly SceneNode[] }).children ?? [];
   return {
     name: node.name,
-    background: node.backgrounds.length ? translatePageFill(node.backgrounds[0]) : undefined,
-    children: await translateChildren(node.children)
+    background: backgrounds?.length ? translatePageFill(backgrounds[0]) : undefined,
+    children: await translateChildren(children)
   };
 };
 

@@ -11,6 +11,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
@@ -47,6 +48,7 @@ export const transformBooleanNode = async (
     ...transformLayoutAttributes(node),
     ...transformVariableConsumptionMap(node),
     ...children,
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };

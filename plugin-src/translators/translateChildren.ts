@@ -49,9 +49,10 @@ export const translateMaskChildren = async (
 };
 
 export const translateChildren = async (children: readonly SceneNode[]): Promise<PenpotNode[]> => {
+  const list = children ?? [];
   const transformedChildren: PenpotNode[] = [];
 
-  for (const child of children) {
+  for (const child of list) {
     const penpotNode = await transformSceneNode(child);
 
     if (penpotNode) transformedChildren.push(penpotNode);

@@ -9,6 +9,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformText,
   transformVariableConsumptionMap
@@ -31,6 +32,7 @@ export const transformTextNode = (node: TextNode): TextShape => {
     ...transformStrokes(node),
     ...transformConstraints(node),
     ...transformVariableConsumptionMap(node),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };

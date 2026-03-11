@@ -11,6 +11,7 @@ import {
   transformProportion,
   transformRotationAndPosition,
   transformSceneNode,
+  transformSelrect,
   transformStrokes,
   transformVariableConsumptionMap
 } from '@plugin/transformers/partials';
@@ -34,6 +35,7 @@ export const transformRectangleNode = (node: RectangleNode): RectShape => {
     ...transformCornerRadius(node),
     ...transformConstraints(node),
     ...transformVariableConsumptionMap(node),
-    ...transformOverrides(node)
+    ...transformOverrides(node),
+    ...transformSelrect(node)
   };
 };
