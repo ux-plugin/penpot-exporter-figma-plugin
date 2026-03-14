@@ -2,8 +2,11 @@ import { calculateRadialGradient, rgbToHex } from '@plugin/utils';
 
 import type { Fill } from '@ui/lib/types/utils/fill';
 
+const MIN_RY_FOR_ASPECT = 1e-6;
+
 export const translateGradientRadialFill = (fill: GradientPaint): Fill => {
   const points = calculateRadialGradient(fill.gradientTransform);
+  const width = points.ry > MIN_RY_FOR_ASPECT ? points.rx / points.ry : 1;
 
   return {
     fillColorGradient: {
@@ -12,7 +15,7 @@ export const translateGradientRadialFill = (fill: GradientPaint): Fill => {
       startY: points.start[1],
       endX: points.end[0],
       endY: points.end[1],
-      width: 1,
+      width,
       stops: fill.gradientStops.map(stop => ({
         color: rgbToHex(stop.color),
         offset: stop.position,

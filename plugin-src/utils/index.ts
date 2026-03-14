@@ -1,5 +1,6 @@
 export * from './applyMatrixToPoint';
 export * from './applyRotation';
+export * from './calculateAngularGradient';
 export * from './calculateLinearGradient';
 export * from './calculateRadialGradient';
 export * from './generateUuid';

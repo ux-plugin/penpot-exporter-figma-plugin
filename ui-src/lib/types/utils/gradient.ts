@@ -1,5 +1,5 @@
 export type Gradient = {
-  type: 'linear' | 'radial';
+  type: 'linear' | 'radial' | 'angular';
   startX: number;
   startY: number;
   endX: number;

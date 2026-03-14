@@ -1,6 +1,7 @@
 import { paintStyles } from '@plugin/libraries';
 import { translateImageFill, translateSolidFill } from '@plugin/translators/fills';
 import {
+  translateGradientAngularFill,
   translateGradientLinearFill,
   translateGradientRadialFill
 } from '@plugin/translators/fills/gradients';
@@ -17,6 +18,7 @@ export const translateFill = (fill: Paint): Fill | undefined => {
     case 'GRADIENT_RADIAL':
       return translateGradientRadialFill(fill);
     case 'GRADIENT_ANGULAR':
+      return translateGradientAngularFill(fill);
     case 'GRADIENT_DIAMOND':
       return translateGradientLinearFill(fill as GradientPaint);
     case 'IMAGE':
