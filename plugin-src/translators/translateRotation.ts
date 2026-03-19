@@ -1,28 +1,36 @@
 import type { ShapeBaseAttributes } from '@ui/lib/types/shapes/shape';
 
+const DET_EPSILON = 1e-10;
+
 export const translateRotation = (
   transform: Transform,
   rotation: number
 ): Pick<ShapeBaseAttributes, 'transform' | 'transformInverse' | 'rotation'> => {
-  return {
+  const a = transform[0][0];
+  const b = transform[1][0];
+  const c = transform[0][1];
+  const d = transform[1][1];
+  const e = 0;
+  const f = 0;
+
+  const result: Pick<ShapeBaseAttributes, 'transform' | 'transformInverse' | 'rotation'> = {
     rotation,
-    transform: {
-      a: transform[0][0],
-      b: transform[1][0],
-      c: transform[0][1],
-      d: transform[1][1],
-      e: 0,
-      f: 0
-    },
-    transformInverse: {
-      a: transform[0][0],
-      b: transform[0][1],
-      c: transform[1][0],
-      d: transform[1][1],
-      e: 0,
-      f: 0
-    }
+    transform: { a, b, c, d, e, f }
   };
+
+  const det = a * d - b * c;
+  if (Math.abs(det) >= DET_EPSILON) {
+    result.transformInverse = {
+      a: d / det,
+      b: -b / det,
+      c: -c / det,
+      d: a / det,
+      e: (c * f - d * e) / det,
+      f: (b * e - a * f) / det
+    };
+  }
+
+  return result;
 };
 
 export const translateZeroRotation = (): Pick<
