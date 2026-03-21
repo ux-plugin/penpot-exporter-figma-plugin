@@ -40,6 +40,12 @@
       "import": "./dist/plugin.js",
       "require": "./dist/plugin.cjs.js",
       "default": "./dist/plugin.js"
+    },
+    "./figma-adapter": {
+      "types": "./dist/plugin-dts/figma-adapter/index.d.ts",
+      "import": "./dist/figma-adapter.es.js",
+      "require": "./dist/figma-adapter.cjs.js",
+      "default": "./dist/figma-adapter.es.js"
     }
   },
   "files": [

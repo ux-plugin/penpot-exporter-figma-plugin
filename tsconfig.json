@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "strict": true,
+    "skipLibCheck": true,
+    "noEmit": true,
+    "typeRoots": ["./node_modules/@figma", "./node_modules/@types"]
+  },
+  "include": [
+    "figma-adapter/**/*.ts",
+    "tests/figma-adapter/**/*.ts",
+    "plugin-src/**/*.ts",
+    "common/**/*.ts"
+  ]
+}

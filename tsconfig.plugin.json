@@ -20,6 +20,7 @@
     "plugin-src/utils/**/*",
     "plugin-src/libraries.ts",
     "plugin-src/processors/**/*",
+    "figma-adapter/**/*.ts",
     "common/**/*",
     "ui-src/types/**/*",
     "ui-src/lib/**/*"

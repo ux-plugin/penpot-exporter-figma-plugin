@@ -21,7 +21,7 @@ export default defineConfig({
       entry: resolve(__dirname, 'lib/index.ts'),
       name: 'PenpotExporterLib',
       formats: ['es', 'cjs'],
-      fileName: (format) => (format === 'es' ? 'index.js' : 'index.cjs.js')
+      fileName: format => (format === 'es' ? 'index.js' : 'index.cjs.js')
     },
     outDir: resolve(__dirname, 'dist/lib'),
     emptyOutDir: true,

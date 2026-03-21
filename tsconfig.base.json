@@ -4,7 +4,8 @@
     "paths": {
       "@common/*": ["./common/*"],
       "@plugin/*": ["./plugin-src/*"],
-      "@ui/*": ["./ui-src/*"]
+      "@ui/*": ["./ui-src/*"],
+      "penpot-exporter/types": ["./lib/index.ts"]
     }
   }
 }
