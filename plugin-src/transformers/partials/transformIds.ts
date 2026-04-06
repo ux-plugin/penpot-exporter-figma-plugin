@@ -1,4 +1,4 @@
-import { identifiers } from '@plugin/libraries';
+import { identifiers, reverseIdentifiers } from '@plugin/libraries';
 import { generateDeterministicUuid } from '@plugin/utils';
 
 import type { ShapeAttributes, ShapeBaseAttributes } from '@ui/lib/types/shapes/shape';
@@ -40,7 +40,13 @@ const transformShapeRef = (node: SceneNode): Uuid | undefined => {
 };
 
 export const transformId = (node: SceneNode): Uuid => {
-  return parseFigmaId(normalizeNodeId(node.id));
+  const uuid = parseFigmaId(normalizeNodeId(node.id));
+  reverseIdentifiers.set(uuid, node.id);
+  return uuid;
+};
+
+export const reverseLookupFigmaId = (penpotUuid: Uuid): string | undefined => {
+  return reverseIdentifiers.get(penpotUuid);
 };
 
 export const transformIds = (node: SceneNode): Pick<ShapeBaseAttributes, 'id' | 'shapeRef'> => {
@@ -53,11 +59,24 @@ export const transformIds = (node: SceneNode): Pick<ShapeBaseAttributes, 'id' | 
 export const transformComponentIds = (
   node: ComponentNode
 ): Pick<ShapeBaseAttributes, 'id'> & Pick<ShapeAttributes, 'componentId'> => {
+  const id = generateDeterministicUuid(`id-${node.key}`);
+  const componentId = generateDeterministicUuid(node.key);
+  const normalized = normalizeNodeId(node.id);
+  identifiers.set(normalized, id);
+  reverseIdentifiers.set(id, node.id);
   return {
-    id: generateDeterministicUuid(`id-${node.key}`),
-    componentId: generateDeterministicUuid(node.key)
+    id,
+    componentId
   };
 };
+
+/** Same Penpot id as the exported document uses for this node (COMPONENT uses key-based id, not Figma node id). */
+export function penpotIdForSelectionSync(node: SceneNode): Uuid {
+  if (node.type === 'COMPONENT') {
+    return transformComponentIds(node as ComponentNode).id;
+  }
+  return transformId(node);
+}
 
 export const transformInstanceIds = (
   node: InstanceNode,

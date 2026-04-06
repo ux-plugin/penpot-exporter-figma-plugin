@@ -21,6 +21,9 @@ import {
 /** Re-export full-page translation from penpot-exporter (runs in plugin main thread). */
 export { translatePage } from 'penpot-exporter/transformers';
 
+/** Re-export ID utilities for selection sync. */
+export { transformId, reverseLookupFigmaId, penpotIdForSelectionSync } from '../plugin-src/transformers';
+
 /**
  * Converts a Figma document change event into incremental Change[] for the worker.
  * Stub: returns an empty array until translation is implemented.

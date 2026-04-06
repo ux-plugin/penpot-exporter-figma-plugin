@@ -4,6 +4,7 @@ import { matrixInvert } from '@plugin/utils/matrixInvert';
 export interface AngularGradientPoints {
   center: number[];
   angleZeroPoint: number[];
+  pointAt90: number[];
   width: number;
 }
 
@@ -12,6 +13,7 @@ const MIN_RADIUS_FOR_ASPECT = 1e-6;
 const DEFAULT_FALLBACK: AngularGradientPoints = {
   center: [0.5, 0.5],
   angleZeroPoint: [1, 0.5],
+  pointAt90: [0.5, 1],
   width: 1
 };
 
@@ -45,6 +47,7 @@ export const calculateAngularGradient = (t: Transform): AngularGradientPoints =>
   return {
     center,
     angleZeroPoint,
+    pointAt90,
     width
   };
 };

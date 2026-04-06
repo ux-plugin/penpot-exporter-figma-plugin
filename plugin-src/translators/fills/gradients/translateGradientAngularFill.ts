@@ -13,6 +13,8 @@ export const translateGradientAngularFill = (fill: GradientPaint): Fill => {
       endX: points.angleZeroPoint[0],
       endY: points.angleZeroPoint[1],
       width: points.width > 0 ? points.width : 1,
+      widthX: points.pointAt90[0],
+      widthY: points.pointAt90[1],
       stops: fill.gradientStops.map(stop => ({
         color: rgbToHex(stop.color),
         offset: stop.position,
