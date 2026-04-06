@@ -5,6 +5,10 @@ export type Gradient = {
   endX: number;
   endY: number;
   width: number;
+  /** Angular only: normalized X of the perpendicular axis endpoint (pointAt90). */
+  widthX?: number;
+  /** Angular only: normalized Y of the perpendicular axis endpoint (pointAt90). */
+  widthY?: number;
   stops: GradientStop[];
 };
 
