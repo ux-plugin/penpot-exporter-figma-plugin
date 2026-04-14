@@ -25,6 +25,7 @@ export * from '../lib/types/shapes/shape';
 export * from '../lib/types/utils/animation';
 export * from '../lib/types/utils/blendModes';
 export * from '../lib/types/utils/blur';
+export * from '../lib/types/utils/glass';
 export * from '../lib/types/utils/children';
 export * from '../lib/types/utils/color';
 export * from '../lib/types/utils/export';
